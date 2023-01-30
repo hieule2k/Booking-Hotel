@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./HistoryItem.module.css";
 import avatar from "../../assets/img/avatar.jpg";
@@ -6,16 +6,23 @@ import Button from "../Button/Button";
 
 const cx = classNames.bind(styles);
 
-function HistoryItem({ children }) {
+function HistoryItem({
+  children,
+  host = false,
+  item,
+  removeItem,
+  handleHistory,
+}) {
+  const { name, address, id, thumbnail } = item;
   return (
     <div className={cx("history-item")}>
       <div className={cx("item-container")}>
         <div className={cx("col-left")}>
           <div className={cx("img-container")}>
-            <img src={avatar} alt="No img" className={cx("image")} />
+            <img src={thumbnail} alt="No img" className={cx("image")} />
           </div>
           <div className={cx("item-information")}>
-            <div className={cx("item-title")}>Fully Furnished Apartment</div>
+            <div className={cx("item-title")}>{name}</div>
             <div className={cx("item-specific")}>
               <div className={cx("specific")}>
                 Check In: <span className={cx("time")}>12 Mar 2021</span>
@@ -31,9 +38,34 @@ function HistoryItem({ children }) {
           </div>
         </div>
         <div className={cx("col-right")}>
-          <Button mediumx black rounded>
-            Cancel Reservation
-          </Button>
+          {host ? (
+            <div className={cx("button-container")}>
+              <Button
+                small
+                green
+                rounded
+                onClick={() => {
+                  handleHistory(item);
+                }}
+              >
+                Approve
+              </Button>
+              <Button small black rounded>
+                Rejected
+              </Button>
+            </div>
+          ) : (
+            <Button
+              mediumx
+              black
+              rounded
+              onClick={() => {
+                removeItem(id);
+              }}
+            >
+              Cancel Reservation
+            </Button>
+          )}
         </div>
       </div>
     </div>

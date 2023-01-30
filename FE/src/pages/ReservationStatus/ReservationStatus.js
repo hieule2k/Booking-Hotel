@@ -8,6 +8,22 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 function ReservationStatus() {
+  const [room, setRooms] = useState(() => {
+    const storageRoomsData = JSON.parse(localStorage.getItem("status"));
+
+    return storageRoomsData ?? [];
+  });
+  const removeItem = (id) => {
+    if (room.length > 0) {
+      const newItems = room.filter((itemx) => itemx.id !== id);
+
+      setRooms(() => {
+        const jsonData = JSON.stringify(newItems);
+        localStorage.setItem("status", jsonData);
+        return newItems;
+      });
+    }
+  };
   const [tab, setTab] = useState(true);
   const handleSetTab = () => {
     setTab(!tab);
@@ -30,7 +46,7 @@ function ReservationStatus() {
               className={cx("history-title", !tab && tabActive)}
               onClick={handleSetTab}
             >
-              Past
+              History
             </div>
           </div>
           <div className={cx("search-wrapper")}>
@@ -60,13 +76,20 @@ function ReservationStatus() {
         </div>
         {tab ? (
           <div className={cx("status")}>
-            <HistoryItem />
-            <HistoryItem />
-            <HistoryItem />
+            {room.length > 0 &&
+              room.map((item) => (
+                <HistoryItem
+                  key={item.id}
+                  item={item}
+                  removeItem={removeItem}
+                />
+              ))}
           </div>
         ) : (
           <div className={cx("status")}>
-            <HistoryItem />
+            {/* {room.map((item) => (
+              <HistoryItem key={item.id} item={item} removeItem={removeItem} />
+            ))} */}
           </div>
         )}
       </div>

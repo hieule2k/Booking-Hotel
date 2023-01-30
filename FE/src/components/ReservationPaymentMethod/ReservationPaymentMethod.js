@@ -62,7 +62,7 @@ function ReservationPaymentMethod({ handleSetCheckBill }) {
           </div>
           <div className={cx("information-container")}>
             <h4 className={cx("header")}>Email:</h4>
-            <p className={cx("header-desc")}>hieuratdeptrai@gmail.com</p>
+            <p className={cx("header-desc")}>hieu@gmail.com</p>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ function ReservationPaymentMethod({ handleSetCheckBill }) {
           medium
           outline
           rounded
-          textBlack
+          textBlue
           leftIcon={<BiArrowBack />}
           onClick={handleSetCheckBill}
         >
@@ -116,7 +116,8 @@ function ReservationPaymentMethod({ handleSetCheckBill }) {
         <Button
           mediumx
           outline
-          black
+          blue
+          to="/ReservationStatus"
           rightIcon={<AiOutlineArrowRight />}
           onClick={alertT}
         >

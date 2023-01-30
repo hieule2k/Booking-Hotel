@@ -13,6 +13,7 @@ import { IoAdd } from "react-icons/io5";
 import { BiBed, BiBath } from "react-icons/bi";
 import { MdPets } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 const cx = classNames.bind(styles);
 
 function Card({
@@ -22,6 +23,7 @@ function Card({
   guide = false,
   wishlists = false,
   add = false,
+  host = false,
   desc,
   children,
   className,
@@ -31,8 +33,12 @@ function Card({
   thumbnail,
   handleLike,
   id,
+  x,
   ...props
 }) {
+  // const removeListHotel=()=>{
+
+  // }
   const data = {
     id,
     name,
@@ -87,7 +93,7 @@ function Card({
           )}
         </div>
       )}
-      {wishlists && !add && (
+      {wishlists && !add && !host && (
         <i className={cx("close-icon")} {...props}>
           <AiOutlineClose />
         </i>
@@ -138,6 +144,7 @@ function Card({
                 <div className={cx("background")}>
                   <h3 className={cx("card-title")}>{name}</h3>
                   <span className={cx("card-desc")}>{address}</span>
+
                   {featured && !guide && (
                     <div className={cx("feature-icons")}>
                       <div className={cx("icon")}>
@@ -162,31 +169,18 @@ function Card({
               )}
             </div>
           )}
-
-          {/* {featured && !guide && (
-                        <div className={cx("feature-icons")}>
-                          <div className={cx("icon")}>
-                            <BiBed />
-                            <span>1</span>
-                          </div>
-                          <div className={cx("icon")}>
-                            <BiBath />
-                            <span>1</span>
-                          </div>
-                          <div className={cx("icon")}>
-                            <AiOutlineCar />
-                            <span>1</span>
-                          </div>
-                          <div className={cx("icon")}>
-                            <MdPets />
-                            <span>1</span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )} */}
         </div>
       </Link>
+      {host && (
+        <div className={cx("host-button")}>
+          <Button small rounded className={cx("modify")}>
+            Modify
+          </Button>
+          <Button small rounded className={cx("remove")}>
+            Remove
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

@@ -20,15 +20,15 @@ function Search() {
           <div className={cx("search-result")}>3 result found</div>
           <CardList column>
             {data.map((x) => (
-              <Link className={cx("box-shadow")} key={x.id} to="/Details">
-                <Card
-                  featured
-                  mb300
-                  name={x.name}
-                  address={x.address}
-                  thumbnail={x.thumbnail}
-                ></Card>
-              </Link>
+              <Card
+                key={x.id}
+                id={x.id}
+                featured
+                mb300
+                name={x.name}
+                address={x.address}
+                thumbnail={x.thumbnail}
+              ></Card>
             ))}
           </CardList>
         </div>

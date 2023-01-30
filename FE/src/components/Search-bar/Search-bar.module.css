@@ -7,6 +7,7 @@
     align-items: center;
     background-color: #d9d9d9;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .find {
@@ -66,6 +67,10 @@
     position: relative;
 }
 
+.search-item:first-child {
+    width: 30%;
+}
+
 .search-item::before {
     position: absolute;
     content: '';
@@ -102,4 +107,5 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    margin-right: 10px;
 }

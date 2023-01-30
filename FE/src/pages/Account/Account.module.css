@@ -28,6 +28,7 @@
     font-size: 16px;
     font-weight: 600;
     color: var(--secondBlack);
+    cursor: pointer;
 }
 
 .account-verification__container {

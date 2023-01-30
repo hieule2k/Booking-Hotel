@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 80px;
+    margin: 0 80px 80px 80px;
+    background-color: #E8EAEC;
+    padding: 50px;
 }
 
 .doawnload-container {
@@ -20,16 +22,6 @@
     font-size: 200px;
 }
 
-.about-section {
-    display: flex;
-    margin-top: 104px;
-    margin-bottom: 102px;
-}
-
-.about__img-container {
-    width: 382px;
-    height: 437px;
-}
 
 .about__img {
     width: 100%;
@@ -83,7 +75,6 @@
     font-size: 20px;
 }
 
-.discovery-more {
-    margin-top: 10px;
-    margin-left: 40px;
+.icon-font {
+    /* font-size: 22px; */
 }

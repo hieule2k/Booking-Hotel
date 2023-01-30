@@ -9,13 +9,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 250px 200px 0 200px;
+    padding: 100px 200px 0 200px;
 
 }
 
 .more-destinations__top {
     position: absolute;
-    top: 90px;
+    top: -50px;
     color: #0CA296;
     font-family: var(--font-allision);
     font-weight: 400;

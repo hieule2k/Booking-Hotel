@@ -13,3 +13,9 @@
 .col-left {
     width: 30%;
 }
+
+.h1 {
+    margin-bottom: 110px;
+    font-size: 50px;
+    margin-top: 50px;
+}

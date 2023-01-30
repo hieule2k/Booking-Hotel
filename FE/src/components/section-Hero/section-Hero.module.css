@@ -1,11 +1,7 @@
 .section-hero {
-    height: 700px;
-    background-image: 
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255),
-            rgba(140,144,143)
-        );
+    height: 500px;
+
+    background: url("https://images.pexels.com/photos/592077/pexels-photo-592077.jpeg?auto=compress&cs=tinysrgb&w=600") top center / cover no-repeat; 
 
 }
 
@@ -22,13 +18,13 @@
 
 .section-hero__heading {
     padding-left: 18px;
-    font-size: 160px;
+    font-size: 90px;
     font-family: var(--font-allision);
     color: rgba(255, 199, 0, 1);
 }
 
 .section-hero__slogan {
-    font-size: 250px;
+    font-size: 140px;
     color: rgba(255, 255, 255, 1);
 }
 

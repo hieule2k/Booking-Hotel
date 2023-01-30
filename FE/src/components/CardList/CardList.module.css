@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 100px;
-    margin: 0 80px 90px 80px;
+    margin: 0 80px 40px 80px;
 }
 
 .card-descrition {
@@ -37,13 +37,13 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 34px;
-    grid-row-gap: 181px;
-    margin-bottom: 181px;
+    grid-row-gap: 130px;
+    margin-bottom: 120px;
 }
 
 .custom {
     position: absolute;
     left: 50%;
+    bottom: -15px;
     transform: translateX(-50%);
-    bottom: 0;
 }

@@ -1,5 +1,6 @@
 .fragment {
     position: relative;
+    height: 100%;
 }
 
 .mb300 {
@@ -114,6 +115,7 @@
 }
 
 .icon-heart {
+    color: #9A9A9A;
     position: absolute;
     right: 18px;
     top: 22px;
@@ -196,4 +198,18 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 5px 10px;
+}
+
+.host-button {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.modify {
+    background-color: #9A9A9A;
+}
+
+.remove {
+    background-color: #E8EAEC;
 }

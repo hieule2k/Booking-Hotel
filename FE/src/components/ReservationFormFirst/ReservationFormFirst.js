@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./ReservationFormFirst.module.css";
 import ReservationItem from "../ReservationItem/ReservationItem";
@@ -9,33 +9,34 @@ import Button from "../Button/Button";
 const cx = classNames.bind(styles);
 
 function ReservationFormFirst({ handleSetCheckBill }) {
-  const [items, setItems] = useState(() => {
-    const storageData = JSON.parse(localStorage.getItem("reservationItem"));
-
-    return storageData ?? [];
-  });
-
   const [room, setRooms] = useState(() => {
     const storageRoomsData = JSON.parse(localStorage.getItem("rooms"));
 
     return storageRoomsData ?? [];
   });
+  const [status, setStatus] = useState(() => {
+    const storageRoomsData = JSON.parse(localStorage.getItem("status"));
+
+    return storageRoomsData ?? [];
+  });
   const [total, setTotal] = useState(1);
+  const [showRoomStyle, setShowRoomStyle] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [serviceFee, setServiceFee] = useState(10000);
+  let tax = 0.1;
+  let totalFee =
+    (total * 10000 + serviceFee) * tax + (total * 10000 + serviceFee);
+  useEffect(() => {
+    console.log(startDate);
+  }, [startDate]);
   const handleIncrease = () => {
-    total < 4 && setTotal((prev) => prev + 1);
+    setTotal((prev) => prev + 1);
   };
 
   const handleDecrease = () => {
     total > 1 && setTotal((prev) => prev - 1);
   };
-
-  // if (items.length > 0 && room.length == 0) {
-  //   const data = JSON.stringify(items[0].rooms);
-  //   localStorage.setItem("rooms", data);
-  // }
-  // console.log(room);
 
   const removeItem = (id) => {
     if (room.length > 0) {
@@ -49,27 +50,99 @@ function ReservationFormFirst({ handleSetCheckBill }) {
     }
   };
 
-  // const addItem = () => {
-  //   const itemExist = room.find((exa) => exa.id === item.id);
-  //   if (items.length > 0 && room.length < 3 ) {
-  //     setRooms((prev) => {
-  //       const newData = [...prev, items[0].rooms[0]];
-  //       const jsonNewData = JSON.stringify(newData);
-  //       localStorage.setItem("rooms", jsonNewData);
-  //       return newData;
-  //     });
-  //   }
-  // };
+  const addItem = () => {
+    setShowRoomStyle(!showRoomStyle);
+  };
+
+  const addItem1 = () => {
+    let id = 200;
+    if (status.length > 0) {
+      id = status[status.length - 1].id + 1;
+    }
+
+    setRooms((prev) => {
+      const newData = [
+        ...prev,
+        {
+          id: id,
+          name: "single",
+          address: "doanxem",
+          thumbnail:
+            "https://cf.bstatic.com/xdata/images/hotel/square600/46129592.webp?k=e23728804b1c260cf7c6e8cbc1ee4f917508f462ad3e3839f91a4138b9b2c686&o=&s=1",
+        },
+      ];
+      const jsonNewData = JSON.stringify(newData);
+      localStorage.setItem("rooms", jsonNewData);
+      return newData;
+    });
+  };
+
+  const addItem2 = () => {
+    let id = 100;
+    if (status.length > 0) {
+      id = status[status.length - 1].id + 1;
+    }
+
+    setRooms((prev) => {
+      const newData = [
+        ...prev,
+        {
+          id: id,
+          name: "double",
+          address: "doanxem",
+          thumbnail:
+            "https://cf.bstatic.com/xdata/images/hotel/square600/46129592.webp?k=e23728804b1c260cf7c6e8cbc1ee4f917508f462ad3e3839f91a4138b9b2c686&o=&s=1",
+        },
+      ];
+      const jsonNewData = JSON.stringify(newData);
+      localStorage.setItem("rooms", jsonNewData);
+      return newData;
+    });
+  };
+
+  const addItem3 = () => {
+    let id = 1;
+    if (status.length > 0) {
+      id = status[status.length - 1].id + 1;
+    }
+
+    setRooms((prev) => {
+      const newData = [
+        ...prev,
+        {
+          id: id,
+          name: "triple",
+          address: "doanxem",
+          thumbnail:
+            "https://cf.bstatic.com/xdata/images/hotel/square600/46129592.webp?k=e23728804b1c260cf7c6e8cbc1ee4f917508f462ad3e3839f91a4138b9b2c686&o=&s=1",
+        },
+      ];
+      const jsonNewData = JSON.stringify(newData);
+      localStorage.setItem("rooms", jsonNewData);
+      return newData;
+    });
+  };
 
   return (
     <div className={cx("reservation-form-first")}>
-      <Button
-        className={cx("add")}
-        medium
-        // onClick={addItem}
-      >
-        Add Room
-      </Button>
+      <div className={cx("reservation-top")}>
+        {showRoomStyle && (
+          <ul className={cx("rooms-list")}>
+            <li className={cx("room-list-item")} onClick={addItem1}>
+              Single
+            </li>
+            <li className={cx("room-list-item")} onClick={addItem2}>
+              Double
+            </li>
+            <li className={cx("room-list-item")} onClick={addItem3}>
+              Vip
+            </li>
+          </ul>
+        )}
+        <Button className={cx("add")} medium onClick={addItem}>
+          Add Room
+        </Button>
+      </div>
       <div className={cx("reservation-item--container")}>
         {room.length > 0 &&
           room.map((item) => (
@@ -117,11 +190,8 @@ function ReservationFormFirst({ handleSetCheckBill }) {
             </div>
           </div>
           <div className={cx("type-container")}>
-            type
-            <select className={cx("select")} name="bedroom" id="bedroom">
-              <option value="1">1 bedroom</option>
-              <option value="2">2 bedroom</option>
-            </select>
+            Total rooms
+            <div>{room.length}</div>
           </div>
         </div>
         <div className={cx("col-3")}>
@@ -131,6 +201,7 @@ function ReservationFormFirst({ handleSetCheckBill }) {
             <label className={cx("label")}>
               <AiOutlineCalendar />
               <DatePicker
+                wrapperClassName={cx("datePicker")}
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
@@ -141,36 +212,39 @@ function ReservationFormFirst({ handleSetCheckBill }) {
             <label className={cx("label")}>
               <AiOutlineCalendar />
               <DatePicker
+                wrapperClassName={cx("datePicker")}
                 selected={endDate}
                 onChange={(date) => setEndDate(date)}
               />
             </label>
           </div>
         </div>
-        <div className={cx("col-3")}>
-          <h2 className={cx("top-heading")}>Price</h2>
+        <div className={cx("col-3", "cost")}>
+          <h2 className={cx("top-heading", "price")}>Price</h2>
           <div className={cx("fee")}>
-            <p>x nights:</p>
-            <p>10000</p>
+            <p>{total} nights:</p>
+            <p>{total * 10000}</p>
           </div>
           <div className={cx("fee")}>
-            <p>x nights:</p>
-            <p>10000</p>
+            <p>Service Fee:</p>
+            <p>{serviceFee}</p>
           </div>
           <div className={cx("fee")}>
-            <p>x nights:</p>
-            <p>10000</p>
+            <p>tax: </p>
+            <p>{tax * 100} %</p>
           </div>
           <div className={cx("fee", "total-price")}>
-            <p>x nights:</p>
-            <p>10000</p>
+            <p>Totals fee:</p>
+            <p>{totalFee}</p>
           </div>
         </div>
       </div>
       <Button
         medium
         black
-        onClick={handleSetCheckBill}
+        onClick={() => {
+          handleSetCheckBill(room[0]);
+        }}
         className={cx("custom-button")}
       >
         Continue

@@ -23,14 +23,14 @@
     color: rgba(251, 231, 126, 1);
     font-family: var(--font-allision);
     font-weight: 400;
-    font-size: 200px;
+    font-size: 150px;
 
 }
 
 .top-destinations__dest {
     color: rgba(255, 255, 255, 1);
     text-transform: lowercase;
-    font-size: 80px;
+    font-size: 50px;
 
     
 }

@@ -3,7 +3,7 @@
 .banner-wrapper {
     text-align: center;
     height: 550px;
-
+    margin-top: 20px;
     background-size: cover;
     background-position: top;
 }

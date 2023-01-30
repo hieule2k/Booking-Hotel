@@ -18,7 +18,8 @@
 } */
 /* size */
 .small {
-
+    width: 116px;
+    height: 38px;
 }
 
 .medium {
@@ -38,6 +39,7 @@
     margin: 0 30px;
 }
 
+
 /* end size */
 
 /* color */
@@ -46,12 +48,33 @@
     background-color: var(--black);
 }
 
+.red {
+    background-color: #F12b2c;
+}
+
+.yeallow {
+    background-color: #FEC400;
+}
+
+.green {
+    background-color: #22C71F;
+    
+}
+
+.blue {
+    background-color: #2a7cac;
+}
+
 .textRed {
     color: #f75656;
 }
 
 .textBlack {
     color: var(--black);
+}
+
+.textBlue {
+    color: #2a7cac;
 }
 
 .backGroundWhite {
@@ -94,6 +117,7 @@
 .icon {
     display: inline-block;
     width: 20px;
+    font-size: 22px;
     text-align: center;
 }
 
